@@ -1,0 +1,94 @@
+@import '/src/Components/Utilities/utilities';
+
+.search {
+    width: 100%;
+    min-height: 500px;
+
+    .search-container {
+        width: 100%;
+        max-width: 1200px;
+        min-height: inherit;
+        margin: auto;
+        padding-bottom: 100px;
+        // border: 1px solid olivedrab;
+
+        h1 {
+            color: white;
+            // margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .news {
+            width: 100%;
+            min-height: 120px;
+            display: flex;
+            // margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: $dark;
+            margin: 30px 0;
+            border-radius: 20px;
+
+
+            .news-description {
+                width: 100%;
+                max-width: 80%;
+                // border: 1px solid white;
+                max-width: 500px;
+                margin-right: 10px;
+
+                .news-description {
+                    margin: 0;
+                }
+
+                .news-headline {
+                    font-weight: normal;
+                    font-size: 1em;
+                    font-weight: bold;
+                }
+
+                .news-post-time {
+                    font-size: .8em;
+                    margin-top: 50px;
+                    color: white;
+                }
+            }
+
+            .news-image {
+                width: 100%;
+                max-width: 150px;
+                height: 120px;
+                border-radius: 15px;
+                // background-color: aquamarine;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        }
+
+        .load-more-btn {
+            text-align: center;
+
+            button {
+                padding: 10px 20px;
+                border-radius: 5px;
+                border: none;
+                color: white;
+                background-color: $jordieBlue;
+                // font-size: ;
+                font-weight: bold;
+                text-transform: uppercase;
+                cursor: pointer;
+            }
+        }
+
+    }
+
+}
