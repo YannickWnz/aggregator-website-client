@@ -104,3 +104,37 @@
 .hide-popup {
     display: none !important;
 }
+
+@media screen and (max-width: 768px) {
+
+    .custom {
+
+        .custom-setting-wrapper {
+            width: 350px;
+
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            p {
+                font-size: .9em;
+            }
+
+            .topics-container {
+
+
+                .topics-list {
+
+
+                    .list {
+                        grid-template-columns: repeat(1, 1fr);
+                    }
+                }
+
+            }
+
+        }
+    }
+
+}

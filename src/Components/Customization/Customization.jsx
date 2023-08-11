@@ -24,7 +24,7 @@ export const Customization = ({setCustomization, customization, onTopicsChange})
         const storedSelectedTopics = JSON.parse(localStorage.getItem('selectedTopics'));
         if (storedSelectedTopics) {
             setTopicSelected(storedSelectedTopics);
-            console.log(topicSelected)
+            // console.log(topicSelected)
         }
     }
 
