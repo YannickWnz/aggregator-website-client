@@ -63,6 +63,7 @@
             align-items: center;
             cursor: pointer;
             position: relative;
+            z-index: 5;
 
             p {
                 font-size: 1.5em;
@@ -160,4 +161,135 @@
 
 .hide-nav {
     display: none !important;
+}
+
+@media screen and (max-width: 1200px) {
+
+    .navbar {
+        box-sizing: border-box;
+
+        &-container {
+            max-width: 70%;
+            transition: .5s ease-in-out;
+        }
+        
+        .navlinks-container {
+            max-width: 70%;
+            transition: .5s ease-in-out;
+
+            .home-link {
+                margin: 0;
+            }
+
+        }
+
+    }
+
+}
+
+@media screen and (max-width: 1024px) {
+
+    .navbar {
+
+        &-container {
+            justify-content: space-between;
+
+            .logo {
+                display: none;
+            }
+
+            .user-profile-icon {
+                margin-left: 10px;
+            }
+
+        }
+
+        .navlinks-container {
+            display: none;
+        }
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+
+    .navbar {
+        width: 100%;
+
+        &-container {
+            max-width: 100%;
+            width: 100%;
+            padding: 0 10px;
+            box-sizing: border-box;
+
+
+            .input-search {
+
+
+                form {
+                    width: 280px;
+
+                    span {
+                        margin: 0 10px ;
+                        cursor: pointer;
+    
+                        i {
+                            font-size: 1em;
+                        }
+                    }
+    
+                    input {
+                        width: 100%;
+                        box-sizing: border-box;
+                        padding: 7px 15px;
+                        border: none;
+                        background-color: transparent;
+                        outline: none;
+                        font-size: 1em;
+                    }
+    
+                }
+    
+            }
+
+            .user-profile-icon {
+                width: 35px;
+                height: 35px;
+
+                p {
+                    font-size: .9em;
+                }
+
+            }
+
+        }
+
+        .navlinks-container {
+            display: none;
+        }
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+
+    .navbar {
+        width: 100%;
+
+        &-container {
+
+
+            .input-search {
+
+                form {
+                    width: 220px;
+                }
+    
+            }
+
+
+        }
+
+    }
+
 }
