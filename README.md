@@ -11,7 +11,7 @@ Xcelsz News is a website that pulls articles from various sources and displays t
 
 1. Clone the repository: Git clone https://github.com/YannickWnz/aggregator-website-client.git
 
-2. In your terminal, navigate to the project directory: cd aggregator-website-client
+2. In your terminal, navigate to the project directory: cd aggregator-website-client/aggregator-website
 
 3. Install dependencies: npm install 
 
