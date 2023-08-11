@@ -9,6 +9,8 @@ Xcelsz News is a website that pulls articles from various sources and displays t
 
 ## Installation
 
+### Frontend
+
 1. Clone the repository: Git clone https://github.com/YannickWnz/aggregator-website-client.git
 
 2. In your terminal, navigate to the project directory: cd aggregator-website-client/aggregator-website
@@ -39,4 +41,20 @@ If you encounter any issues, consider the following steps:
 - Make sure you have the correct versions of Node.js and npm installed.
 - Check for any error messages in the console.
 - Search our GitHub repository's issues to see if your problem has been discussed.
+
+### Backend (Laravel)
+
+1. Make sure to have an apache server up and running on your local machine
+
+1. Clone the backend repository: https://github.com/YannickWnz/aggregator-website.git
+
+2. Navigate to the backend project directory: cd aggregator-website
+
+3. Install backend dependencies using Composer: composer install
+
+4. Start the Laravel backend server: php artisan serve
+
+5. The backend will be available at http://localhost:8000.
+
+
 
