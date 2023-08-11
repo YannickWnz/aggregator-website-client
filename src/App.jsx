@@ -13,13 +13,7 @@ function App() {
     <div className="App">
 
       <Router>
-
-        {/* <PrivateRoute> */}
-          {/* <Navbar /> */}
-        {/* </PrivateRoute> */}
-
         <Routes>
-          {/* <Route path='/' element={ <Home/> } ></Route> */}
           <Route path='/' element={ 
             <PrivateRoute>
               <Home />
