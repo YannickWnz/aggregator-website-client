@@ -10,19 +10,15 @@ export const Navbar = () => {
 
     const navigate = useNavigate()
 
+    // get user data from local storage
+    const user = JSON.parse(localStorage.getItem('userData'));
+
+    // states variables
     const [search, setSearch] = useState('')
-    const [auth, setAuth] = useState(false)
     const [authenticated, setAuthenticated] = useState(false);
 
+    const [profileSection, setProfileSection] = useState(false)
 
-    // useEffect(() => {
-    //     let userData = localStorage.getItem('userData');
-
-    //     if(userData) {
-    //         // navigate('/register')
-    //         setAuth(true)
-    //     }
-    // }, [])
 
     useEffect(() => {
         const userData = localStorage.getItem('userData');
@@ -41,6 +37,38 @@ export const Navbar = () => {
         setSearch('')
 
     }
+
+
+    function displayUserEmail() {
+        if(user) return user.user.email
+    }
+
+    function displayUserName() {
+        if(user) return user.user.name
+    }
+
+    // get user initials
+    function getInitials(name) {
+        if(!name) return
+        const names = name.split(" ");
+        const firstInitial = names[0][0];
+        const middleInitial = names.length > 2 ? names[1][0] : '';
+        const lastInitial = names[names.length - 1][0];
+        let initials = `${firstInitial}${middleInitial}${lastInitial}`
+        return initials.toUpperCase();
+    }
+
+    // function logging user out
+    function logUserOut() {
+        localStorage.removeItem('userData')
+        navigate('/login')
+    }
+
+    // Toggle user profile section visibility
+    function toggleProfileSection() {
+        setProfileSection(!profileSection)
+    }
+
     
 
     return (
@@ -48,7 +76,6 @@ export const Navbar = () => {
             <div className="navbar-container">
                 <div className="logo">
                     <h1>Xcelsz News</h1>
-                    {/* <h1>Your daily news by Xcelsz</h1> */}
                 </div>
                 <div className="input-search">
                     <form action="" onSubmit={handleSubmit} >
@@ -64,8 +91,13 @@ export const Navbar = () => {
                         ><i className="fa-solid fa-xmark"></i> </span>}
                     </form>
                 </div>
-                <div className="user-profile-icon">
-                    <p>user</p>
+                <div onClick={toggleProfileSection} className="user-profile-icon">
+                    <p>{getInitials(user.user.name)}</p>
+                    {profileSection && <div className="profile-details">
+                        <p>{displayUserEmail()}</p>
+                        <h1>Hi, {displayUserName()}!</h1>
+                        <button onClick={logUserOut} >LOGOUT</button>
+                    </div>}
                 </div>
             </div>
             <div className="navlinks-container">
