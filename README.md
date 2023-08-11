@@ -30,6 +30,10 @@ Xcelsz News is a website that pulls articles from various sources and displays t
 
 4. Install backend dependencies using Composer: composer install
 
+5. Navigate to sql-scripts file: cd aggregator-website/sql-scripts
+
+6. Copy the sql scripts and run it in the sql developement environment that come with the Apache server. This will create the website's database and tables.
+
 ## Usage
 
 ### Frontend (React.js)
@@ -58,12 +62,12 @@ We welcome contributions to improve Xcelsz News! To contribute:
 If you encounter any issues, consider the following steps:
 
 - Make sure you have the correct versions of Node.js and npm installed.
+- Make sure your apache server is up and running.
 - Check for any error messages in the console.
-- Search our GitHub repository's issues to see if your problem has been discussed.
 
 ## Contact
 
-For questions, support, or feedback, feel free to contact us:
+For questions, support, or feedback, feel free to reach out:
 - Email: contact@yannickwnz.com
 - Website: (https://yannickwnz.com/)
 
