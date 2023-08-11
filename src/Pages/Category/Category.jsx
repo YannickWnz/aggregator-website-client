@@ -43,8 +43,8 @@ export const Category = () => {
 
     // Effect to run the API calls based on the 'category' parameter
     useEffect(() => {
-        // searchApiCall()
-        // getLocalNews()
+        searchApiCall()
+        getLocalNews()
     }, [category])
 
     // handle load more function
@@ -76,10 +76,6 @@ export const Category = () => {
                                 <a href={result.webUrl} target='_blank' className="news-headline">{result.webTitle}</a>
                                 <p className="news-post-time">{articlePostTime(result.webPublicationDate)}</p>
                             </div>
-                            {/* <div 
-                                className="news-image"
-                                style={ results.length > 0 ? { backgroundImage:  `url(${result.urlToImage})` } : ''}
-                            ></div> */}
                         </div>
                     )
                 }) }
