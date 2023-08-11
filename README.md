@@ -6,10 +6,11 @@ Xcelsz News is a website that pulls articles from various sources and displays t
 
 - Node.js (version 20 or later)
 - npm (Node Package Manager)
+- Apache Server (XAMPP, LAMP or similar)
 
 ## Installation
 
-### Frontend
+### Frontend (React.js)
 
 1. Clone the repository: Git clone https://github.com/YannickWnz/aggregator-website-client.git
 
@@ -19,11 +20,29 @@ Xcelsz News is a website that pulls articles from various sources and displays t
 
 4. Install the Moment.js library (used for handling time and dates): npm install moment
 
+### Backend (PHP Laravel)
+
+1. Make sure to have an apache server up and running on your local machine
+
+2. Clone the backend repository: https://github.com/YannickWnz/aggregator-website.git
+
+3. In your terminal, navigate to the backend project directory: cd aggregator-website
+
+4. Install backend dependencies using Composer: composer install
+
 ## Usage
+
+### Frontend (React.js)
 
 1. Start the project: npm start
 
 2. Open your web browser and go to http://localhost:3000 to access the website.
+
+### Backend (Laravel)
+
+1. Start the Laravel backend server: php artisan serve
+
+2. The backend will be available at http://localhost:8000.
 
 ## Contributing
 
@@ -42,19 +61,11 @@ If you encounter any issues, consider the following steps:
 - Check for any error messages in the console.
 - Search our GitHub repository's issues to see if your problem has been discussed.
 
-### Backend (Laravel)
+## Contact
 
-1. Make sure to have an apache server up and running on your local machine
-
-1. Clone the backend repository: https://github.com/YannickWnz/aggregator-website.git
-
-2. Navigate to the backend project directory: cd aggregator-website
-
-3. Install backend dependencies using Composer: composer install
-
-4. Start the Laravel backend server: php artisan serve
-
-5. The backend will be available at http://localhost:8000.
+For questions, support, or feedback, feel free to contact us:
+- Email: contact@yannickwnz.com
+- Website: (https://yannickwnz.com/)
 
 
 
