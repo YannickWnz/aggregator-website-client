@@ -6,22 +6,21 @@
     min-height: 700px;
     color: white;
 
+    
     a {
         text-decoration: none;
         color: white;
     }
-
+    
     .home-container {
         width: 100%;
         max-width: 1200px;
         margin: 0 auto;
         min-height: inherit;
-        // border: 1px solid salmon;
         padding-bottom: 100px;
 
         .intro-section {
             width: 100%;
-            // border: 1px solid blue;
             margin: 20px 0;
             display: flex;
             justify-content: space-between;
@@ -138,7 +137,6 @@
                 .news-description {
                     width: 100%;
                     max-width: 80%;
-                    // border: 1px solid white;
                     max-width: 500px;
                     margin-right: 10px;
 
@@ -162,7 +160,6 @@
                     max-width: 120px;
                     height: 100px;
                     border-radius: 15px;
-                    // background-color: aquamarine;
                     background-position: center;
                     background-repeat: no-repeat;
                     background-size: cover;
@@ -237,7 +234,6 @@
                 .news-description {
                     width: 100%;
                     max-width: 70%;
-                    // max-width: 500px;
 
                     .news-description {
                         margin: 0;
@@ -268,7 +264,6 @@
         .for-you-pick {
             width: 100%;
             min-height: 300px;
-            // border: 1px solid white;
             margin-top: 50px;
 
             .box-info-wrapper {
@@ -277,20 +272,17 @@
                 grid-template-columns: repeat(3, 1fr);
                 justify-content: space-between;
                 gap: 50px;
-                // padding: 10px;
             }
             
             .box-info {
                 min-height: 600px;
                 border-radius: 15px;
-                // border: 1px solid blue;
                 background-color: $dark;
                 box-sizing: border-box;
                 padding: 20px;
 
                 .info-image {
                     width: 100%;
-                    // max-width: 120px;
                     height: 200px;
                     border-radius: 10px;
                     background-position: center;
@@ -370,8 +362,6 @@ animation-delay: -0.15s;
 
 .empty-picks {
     width: 100%;
-    // max-width: ;
-    // border: 1px solid white;
     text-align: center;
     margin-top: 50px;
 
@@ -407,4 +397,144 @@ animation-delay: -0.15s;
         text-transform: uppercase;
         cursor: pointer;
     }
+}
+
+
+@media screen and (max-width: 1200px) {
+
+    .home {
+
+        .home-container {
+            max-width: 70%;
+
+            .feed-section-one {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .for-you-pick {
+    
+                .box-info-wrapper {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+
+        }
+
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+
+    .home {
+        padding: 0 20px;
+        box-sizing: border-box;
+        width: 100%;
+
+        .home-container {
+            width: 100%;
+            max-width: 100%;
+
+            .intro-section {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+    
+                h1 {
+                    font-size: 1.5em;
+                }
+    
+            }
+
+            .feed-section-one {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .for-you-pick {
+    
+                .box-info-wrapper {
+                    grid-template-columns: repeat(1, 1fr);
+                }
+
+                .box-info {
+                    min-height: 400px;
+                }
+
+            }
+
+
+        }
+
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+
+    .home {
+        padding: 0 20px;
+        box-sizing: border-box;
+        width: 100%;
+
+        .home-container {
+            width: 100%;
+            max-width: 100%;
+
+            .intro-section {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+    
+                .intro-text {
+
+    
+                    h1 {
+                        font-size: 1.2em;
+                    }
+                    p {
+                        font-size: .9em;
+                    }
+                }
+    
+                .customize {
+
+                    button {
+                        padding: 5px 10px;
+                        font-size: .8em;
+                    }
+
+                    span {
+
+                        i {
+                            font-size: .9em;
+                        }
+                    }
+
+                }
+    
+            }
+
+            .feed-section-one {
+
+
+                .news {
+
+                    .news-description {
+
+                        .news-headline {
+                            font-size: .9em;
+                        }
+                    }
+                }
+
+            }
+
+
+        }
+
+    }
+
+
 }

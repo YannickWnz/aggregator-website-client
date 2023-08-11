@@ -12,23 +12,63 @@ import { articlePostTime } from '../../Components/Utilities/UtilitiesFunctions'
 
 export const Home = () => {
 
-    const navigate = useNavigate()
 
-
-
+    // State for world news, local news, and user picks
     const [worldNews, setWorldNews] = useState([])
     const [localNews, setLocalNews] = useState([])
-    const [customization, setCustomization] = useState(false)
-
     const [userTopics, setUserTopics] = useState([])
-
     const [forYouPicks, setForYouPicks] = useState([])
-
+    
+    // State for customization and articles to show
+    const [customization, setCustomization] = useState(false)
     const [articlesToShow, setArticlesToShow] = useState(9);
     const articlesIncrement = 3
 
+    // Fetch world news from NEWSAPI
+    const getWorldNews = async () => {
+        try {
+            const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=91c897b5e5534d609204e6fd90fd0b25`)
+            // const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=9060ec5bd2414ffa81465607bc541985`)
+            setWorldNews(response.data.articles.slice(0, 3))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    // Fetch local news from The Guardian API
+    const localNewsData = async () => {
+        try {
+            const response = await axios.get('https://content.guardianapis.com/search?q=ghana&api-key=2257749e-0fbd-42dc-8063-f500316ffa36')
+            setLocalNews(response.data.response.results)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    // Handle "Load more" button click
     const handleLoadMore = () => {
         setArticlesToShow(prevArticlesToShow => prevArticlesToShow + articlesIncrement)
+    }
+
+    // Fetch user topics data from NEWSAPI
+    function getUserTopicsData() {
+        userTopics.map( async (topic, index) => {
+            try {
+                // const response = await axios.get(`https://newsapi.org/v2/everything?q=${topic}&apiKey=91c897b5e5534d609204e6fd90fd0b25`)
+                const response = await axios.get(`https://newsapi.org/v2/everything?q=${topic}&apiKey=9060ec5bd2414ffa81465607bc541985`)
+                setForYouPicks(response.data.articles)
+            } catch (error) {
+                console.log(error)
+            }
+        })
+    }
+
+    // Fetch user topics from local storage
+    function getUserTopics() {
+        const storedSelectedTopics = JSON.parse(localStorage.getItem('selectedTopics'));
+        if (storedSelectedTopics) {
+            setUserTopics(storedSelectedTopics);
+        }
     }
 
 
@@ -39,88 +79,26 @@ export const Home = () => {
         return formattedDate
     }
 
-    function getUserTopics() {
-        const storedSelectedTopics = JSON.parse(localStorage.getItem('selectedTopics'));
-        if (storedSelectedTopics) {
-            setUserTopics(storedSelectedTopics);
-            storedSelectedTopics.forEach(topic => {
-                // console.log(topic)
-            })
-        }
-    }
 
     const handleTopicsChange = (newTopics) => {
         setUserTopics(newTopics)
-        console.log(newTopics)
-    }
-
-    // getting ghana news using THE GUARDIANS APIs
-    const localNewsData = async () => {
-
-        try {
-            const response = await axios.get('https://content.guardianapis.com/search?q=ghana&api-key=2257749e-0fbd-42dc-8063-f500316ffa36')
-
-            setLocalNews(response.data.response.results)
-
-        } catch (error) {
-            console.log(error)
-        }
-
+        // console.log(newTopics)
     }
     
 
-    
-    function getUserTopicsData() {
-        
-        userTopics.map( async (topic, index) => {
-
-            try {
-                const response = await axios.get(`https://newsapi.org/v2/everything?q=${topic}&apiKey=91c897b5e5534d609204e6fd90fd0b25`)
-                
-                setForYouPicks(response.data.articles)
-
-
-            } catch (error) {
-                console.log(error)
-            }
-
-        })
-
-    }
+    // Effect to fetch data on component mount
+    useEffect(() => {
+        getWorldNews()
+        localNewsData()
+        getUserTopics()
+    }, [])
 
     useEffect(() => {
-        // getUserTopicsData()
+        getUserTopicsData()
     }, [userTopics])
 
 
-    const api = process.env.REACT_APP_TITLE
-
-    console.log(process.env.NODE_ENV)
-
-    const getWorldNews = async () => {
-
-        try {
-            
-            const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${123}`)
-            // const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=91c897b5e5534d609204e6fd90fd0b25`)
-
-            setWorldNews(response.data.articles.slice(0, 3))
-
-
-        } catch (error) {
-            console.log(error)
-        }
-    
-    }
-
-
-    useEffect(() => {
-        // getWorldNews()
-        // localNewsData()
-        // getUserTopics()
-    }, [])
-
-
+    // render
     return (
         <div className="home">
             <div className="home-container">
