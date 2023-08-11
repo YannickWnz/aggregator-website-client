@@ -7,19 +7,24 @@ import './SearchResults.scss'
 
 export const SearchResults = () => {
 
+    // Get the search term from the URL parameter
     const {searchTerm} = useParams() 
 
+    // State to hold search results and number of articles to show
     const [searchResults, setSearchResults] = useState([])
     const [articlesToShow, setArticlesToShow] = useState(5);
     const articlesIncrement = 5;
 
 
+    // fetch all articles related to category or search term
     const searchApiCall = async () => {
 
         try {
             
-            const response = await axios.get(`https://newsapi.org/v2/everything?q=${searchTerm.toLocaleLowerCase()}&apiKey=91c897b5e5534d609204e6fd90fd0b25`)
+            // const response = await axios.get(`https://newsapi.org/v2/everything?q=${searchTerm.toLocaleLowerCase()}&apiKey=91c897b5e5534d609204e6fd90fd0b25`)
+            const response = await axios.get(`https://newsapi.org/v2/everything?q=${searchTerm.toLocaleLowerCase()}&apiKey=9060ec5bd2414ffa81465607bc541985`)
 
+            // Update the state with fetched search results
             setSearchResults(response.data.articles)
             
         } catch (error) {
@@ -28,11 +33,12 @@ export const SearchResults = () => {
 
     }
 
+    // Effect to call searchApiCall when the search term changes
     useEffect(() => {
         searchApiCall()
     }, [searchTerm])
 
-    // handle load more function
+    // function handling load more function
     const handleLoadMore = () => {
         setArticlesToShow(prevArticlesToShow => prevArticlesToShow + articlesIncrement)
     }
@@ -43,6 +49,7 @@ export const SearchResults = () => {
             <div className="search-container">
                 {searchResults.length > 0 && <h1>Your search results for '{searchTerm}'</h1>}
 
+                {/* Map through search results to display articles */}
                 { searchResults.length > 0 ? searchResults.slice(0, articlesToShow).map((results, index) => {
                     return (
                         <div className="news" key={index}>
@@ -59,19 +66,13 @@ export const SearchResults = () => {
                     )
                 } ) : <div className="no-results"><h1>No results found</h1></div> }
 
+                {/* Display "Load more" button if there are results */}
                 {searchResults.length > 0 && <div className="load-more-btn">
                     <button onClick={handleLoadMore}
                     >Load more</button>
                 </div>}
 
-                {/* <div className="news">
-                    <div className="news-description">
-                        <p className="news-source">GhanaWeb</p>
-                        <a href='' className="news-headline">Beige Bank Case: it's correct, accused never received any funds in person or stole funds belongings to Beige Bank Capital</a>
-                        <p className="news-post-time">4 hours ago</p>
-                    </div>
-                    <div className="news-image"></div>
-                </div> */}
+                
             </div>
         </div>
     )
