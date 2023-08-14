@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { articlePostTime } from "../../Components/Utilities/UtilitiesFunctions"
 import './Category.scss'
 
@@ -8,6 +8,7 @@ import './Category.scss'
 export const Category = () => {
 
     // Extract the 'category' parameter from the URL
+    const navigate = useNavigate()
     const {category} = useParams() 
 
     // State variables
@@ -23,6 +24,7 @@ export const Category = () => {
                 // const response = await axios.get(`https://newsapi.org/v2/everything?q=${category.toLocaleLowerCase()}&apiKey=91c897b5e5534d609204e6fd90fd0b25`)
                 const response = await axios.get(`https://newsapi.org/v2/everything?q=${category.toLocaleLowerCase()}&apiKey=9060ec5bd2414ffa81465607bc541985`)
                 setResults(response.data.articles)
+                // checkResults()
             }
         } catch (error) {
             console.log(error)
@@ -35,9 +37,17 @@ export const Category = () => {
             if(category === 'ghana') {
                 const response = await axios.get('https://content.guardianapis.com/search?q=ghana&api-key=2257749e-0fbd-42dc-8063-f500316ffa36')
                 setLocalNewsResults(response.data.response.results)
+                // checkResults()
             }
         } catch (error) {
             console.log(error)
+        }
+    }
+
+    function checkResults() {
+        if(localNewsResults.length > 0 && category !== 'ghana') {
+            setLocalNewsResults([])
+            navigate(`/category/${category}`)
         }
     }
 
@@ -45,6 +55,7 @@ export const Category = () => {
     useEffect(() => {
         searchApiCall()
         getLocalNews()
+        checkResults()
     }, [category])
 
     // handle load more function
