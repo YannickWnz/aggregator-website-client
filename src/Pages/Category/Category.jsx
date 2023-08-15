@@ -44,7 +44,7 @@ export const Category = () => {
         }
     }
 
-    function checkResults() {
+    function ifResultEmptyLocalNews() {
         if(localNewsResults.length > 0 && category !== 'ghana') {
             setLocalNewsResults([])
             navigate(`/category/${category}`)
@@ -55,7 +55,7 @@ export const Category = () => {
     useEffect(() => {
         searchApiCall()
         getLocalNews()
-        checkResults()
+        ifResultEmptyLocalNews()
     }, [category])
 
     // handle load more function

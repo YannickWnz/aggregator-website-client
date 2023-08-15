@@ -10,8 +10,6 @@ function PrivateRoute({children}) {
     
     const checkUserData = () => {
         let userData = localStorage.getItem('userData');
-    
-        // return userData ? children : navigate('/register')
 
         if(userData) {
             setAuth(true)
