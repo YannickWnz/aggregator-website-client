@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { Customization } from '../../Components/Customization/Customization'
 import { articlePostTime } from '../../Components/Utilities/UtilitiesFunctions'
+import { LoginPopUp } from '../../Components/LoginPopUp/LoginPopUp'
 
 
 
@@ -18,6 +19,7 @@ export const Home = () => {
     const [localNews, setLocalNews] = useState([])
     const [userTopics, setUserTopics] = useState([])
     const [forYouPicks, setForYouPicks] = useState([])
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
     
     // State for customization and articles to show
     const [customization, setCustomization] = useState(false)
@@ -97,6 +99,19 @@ export const Home = () => {
         getUserTopicsData()
     }, [userTopics])
 
+    const checkIfUserIsLoggedIn = () => {
+
+    let userData = localStorage.getItem('userData')
+
+    if(!userData) {
+        setIsLoggedIn(true)
+    } else {
+        setCustomization(true)
+    }
+
+
+    }
+
 
     // render
     return (
@@ -107,6 +122,10 @@ export const Home = () => {
                     setCustomization={setCustomization}  
                     onTopicsChange={handleTopicsChange}
                 />
+                <LoginPopUp 
+                    isLoggedIn={isLoggedIn} 
+                    setIsLoggedIn={setIsLoggedIn}
+                />
 
                 <div className="intro-section">
                     <div className="intro-text">
@@ -114,7 +133,7 @@ export const Home = () => {
                         <p>{todayDate()}</p>
                     </div>
                     <div className="customize">
-                        <button onClick={() => {setCustomization(true)}} > <span><i className="fa-solid fa-gear"></i></span>Customize your feed</button>
+                        <button onClick={() => {checkIfUserIsLoggedIn()}} > <span><i className="fa-solid fa-gear"></i></span>Customize your feed</button>
                     </div>
                 </div>
 
@@ -180,7 +199,7 @@ export const Home = () => {
                         {!forYouPicks.length > 0 && (
                             <div className="customize empty-picks">
                             <h1 className='empty-picks'>Customize your feed by selecting topics you are interested in</h1>
-                                <button onClick={() => {setCustomization(true)}} > <span><i className="fa-solid fa-gear"></i></span>Customize your feed</button>
+                                <button onClick={() => {checkIfUserIsLoggedIn()}} > <span><i className="fa-solid fa-gear"></i></span>Customize your feed</button>
                             </div>
                         )}
                     <div className="box-info-wrapper">

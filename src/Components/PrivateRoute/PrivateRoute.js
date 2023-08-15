@@ -4,10 +4,12 @@ import { Navbar } from '../Navbar/Navbar';
 
 function PrivateRoute({children}) {
 
+    const currentRoute = useNavigate().pathname;
     const navigate = useNavigate()
 
-    const [auth, setAuth] = useState(false)
-    
+    const [auth, setAuth] = useState(true)
+    const [route, setRoute] = useState("");
+
     const checkUserData = () => {
         let userData = localStorage.getItem('userData');
 
@@ -19,15 +21,29 @@ function PrivateRoute({children}) {
 
     }
 
+    const checkIfUserIsLoggedIn = () => {
+        // setRoute(currentRoute);
+
+        if(currentRoute === '/login' || currentRoute === '/register') {
+            // setAuth(false)
+        } else {
+            // setAuth(true)
+        }
+
+        
+    }
+    
     useEffect(() => {
-        checkUserData()
-    }, [])
+        // checkUserData()
+        checkIfUserIsLoggedIn()
+        // console.log(auth)
+    }, [currentRoute])
 
     if (auth) {
         return (
             <>
                 <Navbar />
-                {children}
+                {/* {children} */}
             </>
         )
     } else {
