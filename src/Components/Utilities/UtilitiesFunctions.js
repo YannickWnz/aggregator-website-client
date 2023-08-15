@@ -1,5 +1,6 @@
 import moment from 'moment';
 
+
 export const articlePostTime = (postTime) => {
 
     const date = moment(postTime)
@@ -18,4 +19,14 @@ export const articlePostTime = (postTime) => {
 
     return formattedTime
 
+}
+
+export const checkIfUserIsLoggedIn = () => {
+    let userData = localStorage.getItem('userData');
+
+    if(userData) {
+        return true
+    } else {
+        return false
+    }
 }

@@ -40,11 +40,21 @@ export const Navbar = () => {
 
 
     function displayUserEmail() {
-        if(user) return user.user.email
+        // if(user) return user.user.email
+        if(!user) {
+            return 
+        } else {
+            return user.user.email
+        }
     }
 
     function displayUserName() {
-        if(user) return user.user.name
+        // if(user) return user.user.name
+        if(!user) {
+            return
+        } else {
+            return user.user.name
+        }
     }
 
     // get user initials
@@ -61,7 +71,8 @@ export const Navbar = () => {
     // function logging user out
     function logUserOut() {
         localStorage.removeItem('userData')
-        navigate('/login')
+        localStorage.removeItem('selectedTopic')
+        navigate('/')
     }
 
     // Toggle user profile section visibility
@@ -91,14 +102,14 @@ export const Navbar = () => {
                         ><i className="fa-solid fa-xmark"></i> </span>}
                     </form>
                 </div>
-                <div onClick={toggleProfileSection} className="user-profile-icon">
+                {user && <div onClick={toggleProfileSection} className="user-profile-icon">
                     <p>{getInitials(user.user.name)}</p>
                     {profileSection && <div className="profile-details">
                         <p>{displayUserEmail()}</p>
                         <h1>Hi, {displayUserName()}!</h1>
                         <button onClick={logUserOut} >LOGOUT</button>
                     </div>}
-                </div>
+                </div>}
             </div>
             <div className="navlinks-container">
                 <Link to='/' className='home-link' >Home</Link>

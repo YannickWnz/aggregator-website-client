@@ -1,0 +1,74 @@
+@import '/src/Components/Utilities/utilities';
+
+
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.745);
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-container {
+        width: 350px;
+        height: 200px;
+        background-color: $balticSea;
+        border-radius: 7px;
+        padding: 20px;
+        color: white;
+        text-align: center;
+    }
+    
+    h1 {
+        font-size: 1.2em;
+
+        a {
+            text-decoration: underline;
+            color: $jordieBlue;
+        }
+
+    }
+    
+    &-btn {
+        display: flex;
+        // border: 1px solid red;
+        margin-top: 50px;
+        justify-content: flex-end;
+        justify-content: center;
+
+        button {
+            border: none;
+            padding: 10px 20px;
+            border-radius: 15px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+        }
+
+        .signin-btn {
+            margin-right: 10px;
+
+            button {
+                background-color: $jordieBlue;
+            }
+        }
+        .cancel-btn {
+
+            button {
+                background-color: #ff7675;
+            }
+        }
+
+    }
+
+
+}
+
+.hide-popup {
+    display: none !important;
+}
