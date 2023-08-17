@@ -21,8 +21,7 @@ export const SearchResults = () => {
 
         try {
             
-            // const response = await axios.get(`https://newsapi.org/v2/everything?q=${searchTerm.toLocaleLowerCase()}&apiKey=91c897b5e5534d609204e6fd90fd0b25`)
-            const response = await axios.get(`https://newsapi.org/v2/everything?q=${searchTerm.toLocaleLowerCase()}&apiKey=9060ec5bd2414ffa81465607bc541985`)
+            const response = await axios.get(`https://newsapi.org/v2/everything?q=${searchTerm.toLocaleLowerCase()}&apiKey=${process.env.REACT_APP_NEWS_API}`)
 
             // Update the state with fetched search results
             setSearchResults(response.data.articles)

@@ -29,8 +29,7 @@ export const Home = () => {
     // Fetch world news from NEWSAPI
     const getWorldNews = async () => {
         try {
-            const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=91c897b5e5534d609204e6fd90fd0b25`)
-            // const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=9060ec5bd2414ffa81465607bc541985`)
+            const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.REACT_APP_NEWS_API}`)
             setWorldNews(response.data.articles.slice(0, 3))
         } catch (error) {
             console.log(error)
@@ -40,7 +39,7 @@ export const Home = () => {
     // Fetch local news from The Guardian API
     const localNewsData = async () => {
         try {
-            const response = await axios.get('https://content.guardianapis.com/search?q=ghana&api-key=2257749e-0fbd-42dc-8063-f500316ffa36')
+            const response = await axios.get(`https://content.guardianapis.com/search?q=ghana&api-key=${process.env.REACT_APP_THE_GUARDIAN_API}`)
             setLocalNews(response.data.response.results)
         } catch (error) {
             console.log(error)
@@ -56,8 +55,7 @@ export const Home = () => {
     function getUserTopicsData() {
         userTopics.map( async (topic, index) => {
             try {
-                // const response = await axios.get(`https://newsapi.org/v2/everything?q=${topic}&apiKey=91c897b5e5534d609204e6fd90fd0b25`)
-                const response = await axios.get(`https://newsapi.org/v2/everything?q=${topic}&apiKey=9060ec5bd2414ffa81465607bc541985`)
+                const response = await axios.get(`https://newsapi.org/v2/everything?q=${topic}&apiKey=${process.env.REACT_APP_NEWS_API}`)
                 setForYouPicks(response.data.articles)
             } catch (error) {
                 console.log(error)
